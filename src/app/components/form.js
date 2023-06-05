@@ -9,7 +9,7 @@ import { useState } from 'react';
 export default function Form() {
     const [formInfo, setInfo] = useState({
         step: 1,
-        name: '',
+        fullName: '',
         email: '',
         tel: '',
         plan: '',
@@ -24,13 +24,16 @@ export default function Form() {
     const nextStep = () => {
         setInfo({step: formInfo.step + 1});
     };
-    const handleChange = (e) => {
-        setInfo({ [e.target.id]: e.target.value });
-    }
+    const handleFormChange = (values) => {
+        setInfo((formInfo) => {
+          return { ...formInfo, ...values };
+        });
+        console.log(formInfo)
+      };
     switch (formInfo.step) {
         case 1:
             return (
-                <StepOne change={handleChange} next={nextStep} />
+                <StepOne change={handleFormChange} next={nextStep}/>
             )
         case 2:
             return (
