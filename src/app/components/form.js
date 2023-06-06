@@ -33,11 +33,11 @@ export default function Form() {
     switch (formInfo.step) {
         case 1:
             return (
-                <StepOne change={handleFormChange} next={nextStep}/>
+                <StepOne change={handleFormChange} next={nextStep} originalValues={formInfo}/>
             )
         case 2:
             return (
-                <StepTwo />
+                <StepTwo change={handleFormChange} next={nextStep} prev={prevStep}/>
             )
         case 3:
             return (

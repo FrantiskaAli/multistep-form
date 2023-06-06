@@ -105,3 +105,9 @@ a {
     color-scheme: dark;
   }
 }
+.plan{
+  background-color: white;
+}
+.active{
+  background-color: green;
+}

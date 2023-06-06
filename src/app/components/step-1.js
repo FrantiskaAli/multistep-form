@@ -1,11 +1,14 @@
 import { useFormik } from "formik";
+import { useEffect } from "react";
 
-export default function StepOne({ change, next }) {
-  const formik = useFormik({ 
-    initialValues: {//setting initial values of the form
-      fullName: "",
-      email: "",
-      tel: "",
+export default function StepOne({ change, next, originalValues }) {
+
+  const formik = useFormik({
+    initialValues:
+    {
+      fullName: originalValues?.fullName || "",
+      email: originalValues?.email || "",
+      tel: originalValues?.tel || ""
     },
     validate: (values) => { //validating form input, errors saved in the object, where i can 
       const errors = {};//use them later in the component itself
@@ -28,8 +31,8 @@ export default function StepOne({ change, next }) {
           errors.tel = "Invalid phone number format";
         }
       }
-      if (!errors){
-        if(change){
+      if (!errors) {
+        if (change) {
           change(formik.values);
         }
       }
