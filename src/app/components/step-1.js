@@ -35,7 +35,7 @@ export default function StepOne({ change, next, originalValues }) {
       }
       if (!errors) {
         if (change) {
-          change(values);
+          change('form');
         }
       }
       return errors;
@@ -44,8 +44,9 @@ export default function StepOne({ change, next, originalValues }) {
       // Handle form submission
       //I can access the form values using 'values' object
       // e.g., values.fullName, values.email, values.tel
-      console.log(values);
-      // Calling function from my parent component
+      console.log(JSON.stringify(values));
+
+      localStorage.setItem('stepOne', JSON.stringify(values))
       next();
     },
   });

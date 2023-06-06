@@ -4,70 +4,51 @@ import StepTwo from './step-2';
 import StepThree from './step-3';
 import StepFour from './step-4';
 import Thanks from './thanks';
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const Form = () => {
+export default function Form() {
     console.log('ParentComponent rendering');
 
-    const [formInfo, setInfo] = useState({
-        step: 1,
-        fullName: '',
-        email: '',
-        tel: '',
-        plan: '',
-        period: '',
-        onlineServices: "",
-        largerStorage: "",
-        customProfile: "",
-    })
-    const prevStep = useCallback(() => {
-        setInfo((prevInfo) => ({ ...prevInfo, step: prevInfo.step - 1 }));
-    }, []);
+    const [steps, setSteps] = useState(1)
+    const [formInfo, setFormInfo] = useState(() => {
+        const savedForm = localStorage.getItem('form');
+        return savedForm ? JSON.parse(savedForm) : {
+          fullName: '',
+          email: '',
+          tel: '',
+          plan: '',
+          period: '',
+          onlineServices: '',
+          largerStorage: '',
+          customProfile: '',
+        };
+      });
+    
+      useEffect(() => {
+        localStorage.setItem('form', JSON.stringify(formInfo));
+      }, [formInfo]);
+    
+    const prevStep = () => {
+        setSteps((prevStep) => prevStep - 1)
+    };
 
-    const nextStep = useCallback(() => {
-        setInfo((prevInfo) => ({ ...prevInfo, step: prevInfo.step + 1 }));
-    }, []);
+    const nextStep = () => {
+        setSteps((prevStep) => prevStep + 1)
+    };
 
-    const handleFormChange = useCallback((values) => {
-        setInfo((prevInfo) => ({ ...prevInfo, ...values }));
-    }, []);
-
-    /*switch (formInfo.step) {
-        case 1:
-            return (
-                <StepOne change={handleFormChange} next={nextStep} originalValues={formInfo}/>
-            )
-        case 2:
-            return (
-                <StepTwo change={handleFormChange} next={nextStep} prev={prevStep}/>
-            )
-        case 3:
-            return (
-                <StepThree change={handleFormChange} next={nextStep} prev={prevStep}/>
-            )
-        case 4:
-            return (
-                <StepFour />)
-        case 5:
-            return (
-                <Thanks />)
-        default:
-            null
-        // do nothing
-    }*/
+    const handleFormChange = (step) => {
+        let update = localStorage.getItem(step);
+        JSON.parse(update)
+        console.log(update)
+        setInfo((prevInfo) => ({ ...prevInfo, ...update }));
+    }
     return (
-    <section>
-        {formInfo.step === 1 && (
-        <StepOne change={handleFormChange} next={nextStep} originalValues={formInfo} />
-      )}
-      {formInfo.step === 2 && <StepTwo change={handleFormChange} next={nextStep} prev={prevStep} />}
-      {formInfo.step === 3 && <StepThree change={handleFormChange} next={nextStep} prev={prevStep} />}
-      {formInfo.step === 4 && <StepFour />}
-      {formInfo.step === 5 && <Thanks />}
-    </section>)
+        <section>
+            {steps === 1 && (<StepOne change={handleFormChange} next={nextStep} originalValues={formInfo} />)}
+            {steps === 2 && <StepTwo change={handleFormChange} next={nextStep} prev={prevStep} />}
+            {steps === 3 && <StepThree change={handleFormChange} next={nextStep} prev={prevStep} />}
+            {steps === 4 && <StepFour />}
+            {steps === 5 && <Thanks />}
+        </section>)
 
 };
-
-
-
-export default Form
