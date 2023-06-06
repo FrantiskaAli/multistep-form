@@ -4,9 +4,11 @@ import StepTwo from './step-2';
 import StepThree from './step-3';
 import StepFour from './step-4';
 import Thanks from './thanks';
-import { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
-export default function Form() {
+const Form = () => {
+    console.log('ParentComponent rendering');
+
     const [formInfo, setInfo] = useState({
         step: 1,
         fullName: '',
@@ -14,23 +16,23 @@ export default function Form() {
         tel: '',
         plan: '',
         period: '',
-        onlineServices: false,
-        largerStorage: false,
-        customProfile: false,
+        onlineServices: "",
+        largerStorage: "",
+        customProfile: "",
     })
-    const prevStep = () => {
-        setInfo({step: formInfo.step - 1});
-    }
-    const nextStep = () => {
-        setInfo({step: formInfo.step + 1});
-    };
-    const handleFormChange = (values) => {
-        setInfo((formInfo) => {
-          return { ...formInfo, ...values };
-        });
-        console.log(formInfo)
-      };
-    switch (formInfo.step) {
+    const prevStep = useCallback(() => {
+        setInfo((prevInfo) => ({ ...prevInfo, step: prevInfo.step - 1 }));
+    }, []);
+
+    const nextStep = useCallback(() => {
+        setInfo((prevInfo) => ({ ...prevInfo, step: prevInfo.step + 1 }));
+    }, []);
+
+    const handleFormChange = useCallback((values) => {
+        setInfo((prevInfo) => ({ ...prevInfo, ...values }));
+    }, []);
+
+    /*switch (formInfo.step) {
         case 1:
             return (
                 <StepOne change={handleFormChange} next={nextStep} originalValues={formInfo}/>
@@ -41,7 +43,7 @@ export default function Form() {
             )
         case 3:
             return (
-                <StepThree />
+                <StepThree change={handleFormChange} next={nextStep} prev={prevStep}/>
             )
         case 4:
             return (
@@ -50,6 +52,22 @@ export default function Form() {
             return (
                 <Thanks />)
         default:
+            null
         // do nothing
-    }
-}
+    }*/
+    return (
+    <section>
+        {formInfo.step === 1 && (
+        <StepOne change={handleFormChange} next={nextStep} originalValues={formInfo} />
+      )}
+      {formInfo.step === 2 && <StepTwo change={handleFormChange} next={nextStep} prev={prevStep} />}
+      {formInfo.step === 3 && <StepThree change={handleFormChange} next={nextStep} prev={prevStep} />}
+      {formInfo.step === 4 && <StepFour />}
+      {formInfo.step === 5 && <Thanks />}
+    </section>)
+
+};
+
+
+
+export default Form

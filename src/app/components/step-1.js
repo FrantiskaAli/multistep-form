@@ -1,14 +1,16 @@
+'use client'
 import { useFormik } from "formik";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 export default function StepOne({ change, next, originalValues }) {
+
 
   const formik = useFormik({
     initialValues:
     {
-      fullName: originalValues?.fullName || "",
-      email: originalValues?.email || "",
-      tel: originalValues?.tel || ""
+    fullName: originalValues?.fullName || "",
+    email: originalValues?.email  || "",
+    tel: originalValues?.tel ||"",
     },
     validate: (values) => { //validating form input, errors saved in the object, where i can 
       const errors = {};//use them later in the component itself
@@ -33,7 +35,7 @@ export default function StepOne({ change, next, originalValues }) {
       }
       if (!errors) {
         if (change) {
-          change(formik.values);
+          change(values);
         }
       }
       return errors;
@@ -47,6 +49,7 @@ export default function StepOne({ change, next, originalValues }) {
       next();
     },
   });
+
 
   return (
     <form onSubmit={formik.handleSubmit}>
