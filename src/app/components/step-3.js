@@ -1,13 +1,13 @@
 'use client';
 import { useState } from "react";
 
-export default function StepThree({ change, next, prev }) {
+export default function StepThree({ oVal, next, prev }) {
 
   const [addOns, setAddOns] = useState(
     {
-      onlineServices: false,
-      largerStorage: false,
-      customProfile: false
+      onlineServices: oVal.onlineServices? true : false,
+      largerStorage: oVal.largerStorage? true : false,
+      customProfile: oVal.customProfile? true : false,
     }
   )
 
@@ -24,8 +24,7 @@ export default function StepThree({ change, next, prev }) {
       largerStorage: addOns.largerStorage,
       customProfile: addOns.customProfile
     };
-    console.log(addOnsComplete);
-    change(addOnsComplete);
+    localStorage.setItem('stepThree', JSON.stringify(addOnsComplete))
     next()
   }
 

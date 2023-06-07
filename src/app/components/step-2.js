@@ -1,9 +1,9 @@
 'use client'
 import { useState } from "react"
 
-export default function StepTwo({change, next, prev}) {
-  const [selectedPlan, setPlan] = useState("");
-  const [timePlan, setTimePlan] = useState("Monthly");
+export default function StepTwo({originalValues, next, prev}) {
+  const [selectedPlan, setPlan] = useState(originalValues.plan);
+  const [timePlan, setTimePlan] = useState(originalValues?.period || "Monthly");
   const handleCheckbox = () => {
     timePlan === "Monthly" ? setTimePlan('Yearly') : setTimePlan('Monthly')
   }
@@ -17,7 +17,7 @@ export default function StepTwo({change, next, prev}) {
         period: timePlan
       };
       console.log(planComplete);
-      change(planComplete);    
+      localStorage.setItem('stepTwo', JSON.stringify(planComplete))
       next();
     } else { alert('select plan ') }
   }
