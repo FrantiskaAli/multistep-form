@@ -13,10 +13,10 @@ const Form = React.memo(() => {
     email: '',
     tel: '',
     plan: '',
-    period: false,
-    onlineServices: '',
-    largerStorage: '',
-    customProfile: '',
+    period:'monthly',
+    onlineServices: false,
+    largerStorage: false,
+    customProfile: false,
   });
 
   useEffect(() => {
@@ -42,6 +42,10 @@ const Form = React.memo(() => {
     setSteps((prevStep) => prevStep - 1);
   };
 
+  const toPlan =  () => {
+    setSteps((prevStep) => prevStep - 2);
+  };
+
   const nextStep = () => {
     setSteps((prevStep) => prevStep + 1);
   };
@@ -54,7 +58,7 @@ const Form = React.memo(() => {
       )}
       {steps === 2 && <StepTwo next={nextStep} prev={prevStep} originalValues={formInfo} />}
       {steps === 3 && <StepThree next={nextStep} prev={prevStep} oVal={formInfo} />}
-      {steps === 4 && <StepFour />}
+      {steps === 4 && <StepFour toPlan={toPlan} next={nextStep} prev={prevStep} originalValues={formInfo}/>}
       {steps === 5 && <Thanks />}
     </section>
   );
