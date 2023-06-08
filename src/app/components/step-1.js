@@ -31,16 +31,11 @@ import React, { useEffect } from "react";
                           errors.tel = 'Invalid phone number format';
                       }
                   }
-                  if (!errors) {
-                      if (window !== undefined) {
-                        localStorage.setItem('stepOne', JASON.stringify(values))
-                     //     change(values);
-                      }
-                  }
                   return errors;
               },
               onSubmit: (values) => {
                   console.log(JSON.stringify(values));
+                  localStorage.setItem('stepOne', JSON.stringify(values));
                   next();
               },
           });

@@ -24,7 +24,7 @@ export default function StepThree({ oVal, next, prev }) {
       largerStorage: addOns.largerStorage,
       customProfile: addOns.customProfile
     };
-    localStorage.setItem('stepThree', JSON.stringify(addOnsComplete))
+    if (window !== undefined){localStorage.setItem('stepThree', JSON.stringify(addOnsComplete))}
     next()
   }
 
@@ -41,7 +41,7 @@ export default function StepThree({ oVal, next, prev }) {
               <p>Access to multiplayer games</p>
             </label>
           </section>
-          <h6>+$1/mo</h6>
+          <h6>{oVal.period === "Monthly"? "+$1/mo" : "+$10/yr"}</h6>
 
         </div>
         <div>
@@ -52,7 +52,7 @@ export default function StepThree({ oVal, next, prev }) {
               <p>Extra 1TB of cloud save</p>
             </label>
           </section>
-          <h6>+$2/mo</h6>
+          <h6>{oVal.period === "Monthly" ? "+$2/mo" : "+$20/yr"}</h6>
         </div>
         <div>
           <section>
@@ -62,7 +62,7 @@ export default function StepThree({ oVal, next, prev }) {
               <p>Custom theme your profile</p>
             </label>
           </section>
-          <h6>+$2/mo</h6>
+          <h6>{oVal.period === "Monthly"? "+$2/mo" : "+$20/yr"}</h6>
         </div>
       </article>
       <div>

@@ -1,12 +1,27 @@
 'use client'
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
-export default function StepTwo({originalValues, next, prev}) {
+
+export default function StepTwo({ originalValues, next, prev }) {
   const [selectedPlan, setPlan] = useState(originalValues.plan);
-  const [timePlan, setTimePlan] = useState(originalValues?.period || "Monthly");
-  const handleCheckbox = () => {
-    timePlan === "Monthly" ? setTimePlan('Yearly') : setTimePlan('Monthly')
-  }
+  const [timePlan, setTimePlan] = useState(originalValues?.period);
+  const [prices, setPrices] = useState({
+    arcadePrice: timePlan === "Monthly" ? "9/mo" : "90/yr",
+    advancedPrice: timePlan === "Monthly" ? "12/mo" : "120/yr",
+    proPrice: timePlan === "Monthly" ? "15/mo" : "150/yr",
+  });
+  useEffect(() => {
+    setPrices({
+      arcadePrice: timePlan === "Monthly" ? "9/mo" : "90/yr",
+      advancedPrice: timePlan === "Monthly" ? "12/mo" : "120/yr",
+      proPrice: timePlan === "Monthly" ? "15/mo" : "150/yr",
+    });
+  }, [timePlan]);
+
+  const handleCheckbox = (e) => {
+    const checked = e.target.checked;
+    setTimePlan(checked ? "Yearly" : "Monthly");
+  };
   const handleClick = (option) => {
     setPlan(option)
   }
@@ -17,12 +32,12 @@ export default function StepTwo({originalValues, next, prev}) {
         period: timePlan
       };
       console.log(planComplete);
-      localStorage.setItem('stepTwo', JSON.stringify(planComplete))
+      if (window !== undefined) { localStorage.setItem('stepTwo', JSON.stringify(planComplete)) }
       next();
     } else { alert('select plan ') }
   }
-  
-  
+
+
   return (
     <>
       <h2>Select your plan</h2>
@@ -31,17 +46,17 @@ export default function StepTwo({originalValues, next, prev}) {
         <section style={{ height: "50px", width: "50px", border: "3px solid green" }} className={selectedPlan === "Arcade" ? "activePlan" : "plan"} onClick={() => handleClick("Arcade")}>
 
           <h5>Arcade</h5>
-          <p>$9/mo</p>
+          <p>{prices.arcadePrice}</p>
         </section>
         <section style={{ height: "50px", width: "50px", border: "3px solid green" }} className={selectedPlan === "Advanced" ? "activePlan" : "plan"} onClick={() => handleClick("Advanced")}>
 
           <h5>Advanced</h5>
-          <p>$12/mo</p>
+          <p>{prices.advancedPrice}</p>
         </section>
 
         <section style={{ height: "50px", width: "50px", border: "3px solid green" }} className={selectedPlan === "Pro" ? "activePlan" : "plan"} onClick={() => handleClick("Pro")}>
           <h5>Pro</h5>
-          <p>$15/mo</p>
+          <p>{prices.proPrice}</p>
         </section>
 
       </article>
@@ -50,11 +65,11 @@ export default function StepTwo({originalValues, next, prev}) {
 
 
         <span>Monthly</span>
-        <label><input type="checkbox" id="switch-check" onChange={handleCheckbox} value={timePlan} /><span className="slider"></span></label>
+        <label><input type="checkbox" id="switch-check" onChange={handleCheckbox} checked={timePlan === "Yearly"} /><span className="slider"></span></label>
         <span>Yearly</span>
       </article>
       <div >
-        <button id="back-one" onClick={()=>prev()} >Go Back</button>
+        <button id="back-one" onClick={() => prev()} >Go Back</button>
         <button id="next-two" onClick={() => onSubmit()}>Next Step</button>
       </div>
     </>

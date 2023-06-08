@@ -1,11 +1,42 @@
-import React, { useState } from 'react';
+'use client'
+import React, { useState, useEffect } from 'react';
 
 
-export default function StepFour({ originalValues, next, prev, toPlan }) {
 
+export default function StepFour({ oVal, next, prev, toPlan }) {
 
-  const info = originalValues ? originalValues : null
+  const info = oVal;
 
+  const arcade = 9
+  const advanced = 12
+  const pro = 15
+  const onlineServices = 1;
+  const largerStorage = 1;
+  const customProfile =2;
+let mainPrice = 0
+if (info.plan === "Arcade"){
+  mainPrice = arcade
+} else if (info.plan === "Advanced"){
+  mainPrice = advanced
+} else { mainPrice = pro}
+if (info.period === "Yearly"){
+  mainPrice *= 10
+}
+let addOns = 0
+if (info.onlineServices){
+  addOns++}
+if (info.largerStorage){
+  addOns++}
+if(info.customProfile) {
+  addOns
+}
+if (info.period === "Yearly"){
+  addOns *= 10
+}
+function confirm (){
+ if(window){ localStorage.clear();}
+  next()
+}
 
 
   return (
@@ -18,29 +49,29 @@ export default function StepFour({ originalValues, next, prev, toPlan }) {
           <p onClick={() => toPlan()}>Change</p>
         </section>
         <section>
-          price
+          {mainPrice}
         </section>
       </article>
 
       {info.onlineServices && <article>
         <p>Online Services</p>
-        <p>price</p>
+        <p>{info.period === "Monthly"? "+$1/mo" : "+$10/yr"}</p>
       </article>}
       {info.largerStorage  && <article>
         <p>Larger storage</p>
-        <p>price</p>
+        <p>{info.period === "Monthly"? "+$1/mo" : "+$10/yr"}</p>
       </article>}
       {info.customProfile && <article>
         <p>Custom Profile</p>
-        <p>price</p>
+        <p>{info.period === "Monthly"? "+$2/mo" : "+$20/yr"}</p>
       </article>}
       <article>
         <p>Total(per{info.period})</p>
-        <p>+$price/{info.period}</p>
+        <p>+${mainPrice + addOns}/{info.period === "Monthly"? "mo" : "yr"}</p>
       </article>
       <article>
         <button id="back-one" onClick={() => prev()} >Go Back</button>
-        <button id="next-two" onClick={() => next()}>Confirm</button>
+        <button id="next-two" onClick={() => confirm()}>Confirm</button>
       </article>
     </section>
   )
