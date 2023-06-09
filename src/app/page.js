@@ -12,7 +12,7 @@ import './page.module.css';
 function Home() {
 
  //setting steps state, to be able to move around the form
-  const [steps, setSteps] = useState(1);
+  const [steps, setSteps] = useState(2);
   /*Using state for user input data */
   const [formInfo, setFormInfo] = useState({
     fullName: '',

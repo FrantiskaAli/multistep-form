@@ -14,10 +14,10 @@ export default function StepOne({ next, originalValues }) {
         validate: (values) => { //conditions to validate inputs, regular expressions found on stack overflow(both tel and email)
             const errors = {};
             if (!values.fullName) {
-                errors.fullName = 'Required';
+                errors.fullName = 'This field is required';
             }
             if (!values.email) {
-                errors.email = 'Required';
+                errors.email = 'This field is required';
             } else {
                 const re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
                 if (!re.test(values.email)) {
@@ -25,11 +25,11 @@ export default function StepOne({ next, originalValues }) {
                 }
             }
             if (!values.tel) {
-                errors.tel = 'Required';
+                errors.tel = 'This field is required';
             } else {
                 const reg = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
                 if (!reg.test(values.tel)) {
-                    errors.tel = 'Invalid phone number format';
+                    errors.tel = 'Invalid phone number';
                 }
             }
             return errors;
@@ -43,12 +43,16 @@ export default function StepOne({ next, originalValues }) {
 
     return (
         //on screen: 
-        <form onSubmit={formik.handleSubmit} id="input-form">
+        <form onSubmit={formik.handleSubmit} id="input-form">{/*when form submitted formiks function will set off*/}
             <h1>Personal info</h1>
             <h2>Please provide your name, email address, and phone number.</h2>
-            <section>
-                <label htmlFor="fullName">Name</label>
+            <section className="labels-s1">
+                <label htmlFor="fullName" className="input-label">Name</label>
+                {formik.errors.fullName && formik.touched.fullName && ( //conditioning by checking formiks error object and generating label accordingly
+                <label className="err-msg-input">{formik.errors.fullName}</label>
+            )}
             </section>
+
             <input
                 type="text"
                 id="fullName"
@@ -57,13 +61,16 @@ export default function StepOne({ next, originalValues }) {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.fullName}
+                className={formik.errors.fullName ? "input error-input" : "input"  }
             />
-            {formik.errors.fullName && formik.touched.fullName && (
-                <div>{formik.errors.fullName}</div>
+          
+
+            <section className="labels-s1">
+                <label htmlFor="email" className="input-label">Email address</label>
+                {formik.errors.email && formik.touched.email && (
+                <label className="err-msg-input">{formik.errors.email}</label>
             )}
 
-            <section>
-                <label htmlFor="email">Email address</label>
             </section>
             <input
                 type="text"
@@ -73,13 +80,15 @@ export default function StepOne({ next, originalValues }) {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.email}
+                className={formik.errors.email ? "input error-input" : "input" }
             />
-            {formik.errors.email && formik.touched.email && (
-                <div>{formik.errors.email}</div>
+            
+            <section className="labels-s1">
+                <label htmlFor="tel" className="input-label">Phone Number</label>
+                {formik.errors.tel && formik.touched.tel && (
+                <label className="err-msg-input">{formik.errors.tel}</label>
             )}
 
-            <section>
-                <label htmlFor="tel">Phone Number</label>
             </section>
             <input
                 type="text"
@@ -89,12 +98,10 @@ export default function StepOne({ next, originalValues }) {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.tel}
+                className={formik.errors.tel ? "input error-input" : "input" }
             />
-            {formik.errors.tel && formik.touched.tel && (
-                <div>{formik.errors.tel}</div>
-            )}
-
-            <button type="submit">Next step</button>
+           
+            <button className="btn-next" type="submit">Next step</button>
         </form>
     );
 };

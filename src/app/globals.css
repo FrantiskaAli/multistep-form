@@ -1,26 +1,28 @@
 /*Colors from style guide saved in variables*/
-:root{
+:root {
   --marine-blue: hsl(213, 96%, 18%);
---purplish-blue: hsl(243, 100%, 62%);
---pastel-blue: hsl(228, 100%, 84%);
---light-blue: hsl(206, 94%, 87%);
---strawberry-red: hsl(354, 84%, 57%);
---cool-gray: hsl(231, 11%, 63%);
---light-gray: hsl(229, 24%, 87%);
---magnolia: hsl(217, 100%, 97%);
---alabaster: hsl(231, 100%, 99%);
---white: hsl(0, 0%, 100%);
+  --purplish-blue: hsl(243, 100%, 62%);
+  --pastel-blue: hsl(228, 100%, 84%);
+  --light-blue: hsl(206, 94%, 87%);
+  --strawberry-red: hsl(354, 84%, 57%);
+  --cool-gray: hsl(231, 11%, 63%);
+  --light-gray: hsl(229, 24%, 87%);
+  --magnolia: hsl(217, 100%, 97%);
+  --alabaster: hsl(231, 100%, 99%);
+  --white: hsl(0, 0%, 100%);
 }
+
 /*default margin and paddings*/
-*{
-  display:border-box;
-  margin:0;
-  padding:0;
+* {
+  display: border-box;
+  margin: 0;
+  padding: 0;
 }
+
 /*font import*/
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap');
 
-body{
+body {
   background-color: var(--light-gray);
   display: flex;
   justify-content: center;
@@ -37,73 +39,169 @@ body {
   font-size: 16px;
 }
 
-#main-section{
+#main-section {
   display: flex;
   background-color: var(--white);
-  padding:2%;
+  padding: 2%;
   border-radius: 10px;
   width: 900px;
 }
+
 /*steps aside section*/
-#steps-guide{
-  min-width:274px ;
+#steps-guide {
+  min-width: 274px;
   min-height: 569px;
   background-image: url('./assets/bg-sidebar-desktop.svg');
   background-size: cover;
 }
-#step-list{
+
+#step-list {
   padding: 15%;
- 
+
 }
-.guide-item{
-  display:flex;
+
+.guide-item {
+  display: flex;
   margin-bottom: 20%;
 }
-.step-no{
-  border:1px solid var(--alabaster);
+
+.step-no {
+  border: 1px solid var(--alabaster);
   border-radius: 50%;
-  padding:5%;
-  padding-top:6%;
+  padding: 5%;
+  padding-top: 6%;
   height: 5%;
-  width:5% ;
+  width: 5%;
   background-color: var(--purplish-blue);
-  color:var(--alabaster);
+  color: var(--alabaster);
   font-weight: bolder;
 }
-.aside-step-headings{
+
+.aside-step-headings {
   margin-left: 10%;
 }
-.number{
+
+.number {
   margin-top: -5px;
 }
-.activeStep{
+
+.activeStep {
   background-color: var(--light-blue);
   color: var(--purplish-blue);
 }
-.aside-step-h1{
+
+.aside-step-h1 {
   text-transform: uppercase;
   font-size: small;
   color: var(--cool-gray)
 }
-.aside-step-h2{
+
+.aside-step-h2 {
   text-transform: uppercase;
   font-weight: 700;
-  color:var(--magnolia);
+  color: var(--magnolia);
   font-family: 'Ubuntu', sans-serif;
 }
-#input-form{
-  justify-self:center;
-  align-self:center;
-  padding: 5%;
-  width: 100%;
+
+/*This is styling of step one*/
+#input-form {
+
+  padding: 5% 10%;
+  width: 70%;
 }
-h1{
+
+h1 {
   color: var(--marine-blue);
   font-size: xx-large;
-  margin-bottom: 4%;
+  margin-bottom: 3%;
 }
-h2{
-  font-size: smaller;
-  color: var(--cool-gray)
 
+h2 {
+  font-size: smaller;
+  color: var(--cool-gray);
+  margin-bottom: 5%;
+}
+
+.input-label {
+  color: var(--marine-blue);
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bolder;
+  font-size: medium;
+}
+
+.input {
+  width: 100%;
+  padding: 3% 5%;
+  margin-top: 10px;
+  margin-bottom: 20px;;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1.5px solid var(--light-gray);
+}
+.input:focus{
+  border: 1px solid var(--purplish-blue);
+  outline:none;
+}
+.error-input{
+  border:1px solid var(--strawberry-red)
+}
+.labels-s1{
+  display:flex;
+  justify-content: space-between;
+  width:100%;
+}
+.err-msg-input{
+  color: var(--strawberry-red);
+  font-weight: bolder;
+  font-size: small;
+}
+.btn-next{
+  padding:15px 30px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  background-color: var(--marine-blue);
+  color: var(--alabaster) ;
+  font-weight:bolder;
+  float: right;
+  
+
+}
+.btn-next:hover{
+  color:var(--magnolia);
+  background-color: var(--purplish-blue);
+}
+/*step 2 styling*/
+#step-2{
+  padding: 5% 10%;
+  width: 70%;
+}
+#options-row{
+  display:flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.plan{
+  width: 25%;
+  border: 1px solid var(--light-gray);
+  border-radius: 10px;
+  padding:6% 3%;
+  height: 7rem;
+}
+.plan:hover{
+  border-color:var(--purplish-blue);
+}
+.activePlan{
+  background-color: hsla(243, 100%, 62%, 0.07);
+  border-color:var(--purplish-blue);
+}
+.plan-headings{
+  margin-top:40%;
+
+}
+.plan-name-h{
+  color:var(--marine-blue);
+}
+p{
+  color: var(--cool-gray);
 }
