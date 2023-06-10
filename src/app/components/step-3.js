@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export default function StepThree({ oVal, next, prev }) {
 
-  const [addOns, setAddOns] = useState(
+  const [addOns, setAddOns] = useState(//setting state from parent component
     {
       onlineServices: oVal.onlineServices? true : false,
       largerStorage: oVal.largerStorage? true : false,
@@ -11,7 +11,7 @@ export default function StepThree({ oVal, next, prev }) {
     }
   )
 
-  const handleCheckbox = (option) => {
+  const handleCheckbox = (option) => {//updating options state
     setAddOns((prevAddOns) => ({
       ...prevAddOns,
       [option]: !prevAddOns[option],
@@ -24,51 +24,51 @@ export default function StepThree({ oVal, next, prev }) {
       largerStorage: addOns.largerStorage,
       customProfile: addOns.customProfile
     };
-    if (window !== undefined){localStorage.setItem('stepThree', JSON.stringify(addOnsComplete))}
+    if (typeof window !== "undefined"){window.localStorage.setItem('stepThree', JSON.stringify(addOnsComplete))}
     next()
   }
 
   return (
-    <section>
-      <h2>Pick add-ons</h2>
+    <section id="step-3" className="main-form" >
+      <h1>Pick add-ons</h1>
       <p>Add-ons help enhance your gaming experience.</p>
-      <article>
-        <div >
-          <section >
+      <article id="add-ons">
+        <section className={addOns.onlineServices ? "add-on active" : "add-on"} >
+          <article className="addon-inside">
             <input type="checkbox" name="online-services" id="online-services" checked={addOns.onlineServices} onChange={() => handleCheckbox("onlineServices")} />
-            <label htmlFor="online-services">
+            <label className="label-addOns" htmlFor="online-services">
               <h3>Online service</h3>
               <p>Access to multiplayer games</p>
             </label>
-          </section>
+          </article>
           <h6>{oVal.period === "Monthly"? "+$1/mo" : "+$10/yr"}</h6>
 
-        </div>
-        <div>
-          <section>
+        </section>
+        <section className={addOns.largerStorage? "add-on active" : "add-on"} >
+          <article className="addon-inside">
             <input type="checkbox" name="extra-storage" id="extra-storage" checked={addOns.largerStorage} onChange={() => handleCheckbox("largerStorage")} />
-            <label htmlFor="extra-storage">
+            <label htmlFor="extra-storage" className="label-addOns" >
               <h3>Extra storage</h3>
               <p>Extra 1TB of cloud save</p>
             </label>
-          </section>
+          </article>
           <h6>{oVal.period === "Monthly" ? "+$2/mo" : "+$20/yr"}</h6>
-        </div>
-        <div>
-          <section>
+        </section>
+        <section className={addOns.customProfile ? "add-on active" : "add-on"} >
+          <article className="addon-inside">
             <input type="checkbox" name="custom-profile" id="custom-profile" checked={addOns.customProfile} onChange={() => handleCheckbox("customProfile")} />
-            <label htmlFor="custom-profile">
+            <label htmlFor="custom-profile" className="label-addOns" >
               <h3>Customizable Profile</h3>
               <p>Custom theme your profile</p>
             </label>
-          </section>
+          </article>
           <h6>{oVal.period === "Monthly"? "+$2/mo" : "+$20/yr"}</h6>
-        </div>
+        </section>
       </article>
-      <div>
-        <button onClick={() => prev()}>Go Back</button>
-        <button onClick={() => onSubmit()}>Next Step</button>
-      </div>
+      <article className="btns-flex">
+        <button className="btn-back" onClick={() => prev()}>Go Back</button>
+        <button className="btn-next" onClick={() => onSubmit()}>Next Step</button>
+      </article>
     </section>
   )
 }

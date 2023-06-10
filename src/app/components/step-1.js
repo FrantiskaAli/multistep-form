@@ -36,14 +36,14 @@ export default function StepOne({ next, originalValues }) {
         },
         onSubmit: (values) => { //this function runs when form submitted, still part of formiks object
             console.log(JSON.stringify(values));
-            localStorage.setItem('stepOne', JSON.stringify(values));
+            if (typeof window !== "undefined") {window.localStorage.setItem('stepOne', JSON.stringify(values))};
             next();//function from parent component
         },
     });
 
     return (
         //on screen: 
-        <form onSubmit={formik.handleSubmit} id="input-form">{/*when form submitted formiks function will set off*/}
+        <form onSubmit={formik.handleSubmit} id="input-form" className="main-form">{/*when form submitted formiks function will set off*/}
             <h1>Personal info</h1>
             <h2>Please provide your name, email address, and phone number.</h2>
             <section className="labels-s1">
@@ -100,8 +100,9 @@ export default function StepOne({ next, originalValues }) {
                 value={formik.values.tel}
                 className={formik.errors.tel ? "input error-input" : "input" }
             />
-           
+           <article className="btns-flex">
             <button className="btn-next" type="submit">Next step</button>
+            </article>
         </form>
     );
 };

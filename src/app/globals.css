@@ -104,10 +104,12 @@ body {
 }
 
 /*This is styling of step one*/
-#input-form {
-
+.main-form {
+  display:flex;
+  flex-direction: column;
   padding: 5% 10%;
   width: 70%;
+  min-height: 100%;
 }
 
 h1 {
@@ -155,6 +157,7 @@ h2 {
   font-weight: bolder;
   font-size: small;
 }
+/*ALL the buttons styles and positioning*/
 .btn-next{
   padding:15px 30px;
   border-radius: 10px;
@@ -163,19 +166,35 @@ h2 {
   background-color: var(--marine-blue);
   color: var(--alabaster) ;
   font-weight:bolder;
-  float: right;
-  
+  justify-self: end;
+  margin-left:auto;
 
 }
 .btn-next:hover{
   color:var(--magnolia);
   background-color: var(--purplish-blue);
+  cursor:pointer;
+}
+.btn-back{
+  background-color: transparent;
+  border:none;
+  color:var(--cool-gray);
+  font-weight: 700;
+  justify-self: flex-start;
+}
+.btn-back:hover{
+  color: var(--marine-blue);
+  cursor:pointer;
+}
+.btns-flex{
+  width:100%;
+  display: flex;
+  align-self: flex-end;
+  margin-top: auto;
+  justify-content: space-between;
 }
 /*step 2 styling*/
-#step-2{
-  padding: 5% 10%;
-  width: 70%;
-}
+
 #options-row{
   display:flex;
   width: 100%;
@@ -190,11 +209,9 @@ h2 {
 }
 .plan:hover{
   border-color:var(--purplish-blue);
+  cursor:pointer;
 }
-.activePlan{
-  background-color: hsla(243, 100%, 62%, 0.07);
-  border-color:var(--purplish-blue);
-}
+
 .plan-headings{
   margin-top:40%;
 
@@ -204,4 +221,150 @@ h2 {
 }
 p{
   color: var(--cool-gray);
+}
+/*setting sliding checkbox*/
+#switch {
+  position: relative;
+display: inline-block;
+width: 50px;
+height: 25px;
+}
+
+#switch-check {/*hides default checkbox*/
+  opacity: 0;
+  width: 0;
+  height: 0;
+
+}
+.slider{
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor:pointer;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 15px;
+}
+.slider:before{
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left:3px;
+  border-radius: 50%;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+#switch-check:checked + .slider {
+  background-color: darkblue;
+}
+#switch-check:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+#switch-check:checked + .slider:before {
+  -webkit-transform: translateX(23px);
+  -ms-transform: translateX(23px);
+  transform: translateX(23px);
+}
+#pickPeriod{
+  text-align: center;
+  margin-top:2rem;
+  padding:3% 0;
+  width:100%;
+  border-radius:10px;
+  background-color:hsla(243, 100%, 62%, 0.07) ;
+}
+.periods{
+  font-weight: bolder;
+  font-size: smaller;
+  margin:0 2rem;
+  color:var(--cool-gray);
+}
+.act-period{
+  color:var(--marine-blue)
+}
+/*step 3*/
+.add-ons{
+  margin-top:5%;
+}
+.add-on{
+  display:flex;
+  width: 90%;
+  justify-content: space-between;
+  border:solid 1px var(--light-gray);
+  border-radius:10px;
+  padding: 2.5% 5%;
+  margin-top:5%;
+}
+
+.addon-inside{
+  display:flex;
+  justify-content: space-between;
+  text-align: left;
+}
+.label-addOns{
+  margin-left: 2rem;
+}
+h3{
+  font-size:medium;
+  color:var(--marine-blue);
+  margin-bottom: .4rem;
+}
+.summary-choice{
+  display: flex;
+  justify-content: space-between;
+  background-color:  hsla(243, 100%, 62%, 0.07);
+  width:90%;
+  padding: 4% 5%;
+  border-radius:10px;
+}
+#plan-price-sum{
+  font-weight:bolder;
+  align-self: center;
+}
+#summary-plan{
+  border-bottom: solid 1px var(--light-gray) ;
+}
+.add-on-sum{
+  display: flex;
+  justify-content: space-between;
+  background-color:  hsla(243, 100%, 62%, 0.07);
+  width:90%;
+  padding: 5%;
+  border-radius:10px;
+}
+.add-on-sum-price{
+  color:rgb(86, 86, 86);
+}
+#sum-total{
+  display: flex;
+  justify-content: space-between;
+  padding: 4% 5%; ;
+}
+#total{
+  color:var(--purplish-blue);
+  font-weight: bolder;
+  font-size: larger;
+}
+.active{/*works on step one and two, active selecte section styling*/
+  background-color: hsla(243, 100%, 62%, 0.07);
+  border-color:var(--purplish-blue);
+}
+#thanks{
+  align-items: center;
+  justify-items: center;
+  align-self: center;
+  text-align: center;
+}
+#thanks-note{
+  text-align: center;
+}
+.smaller{
+  font-size: smaller;
 }

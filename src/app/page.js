@@ -12,7 +12,7 @@ import './page.module.css';
 function Home() {
 
  //setting steps state, to be able to move around the form
-  const [steps, setSteps] = useState(2);
+  const [steps, setSteps] = useState(1);
   /*Using state for user input data */
   const [formInfo, setFormInfo] = useState({
     fullName: '',
@@ -27,12 +27,15 @@ function Home() {
   /*Because children components cant set state for parent components I am using local storage to safe what happens in the step
   and then update form state, use effect work for firsly making sure window is defined and that effect changes after every tim local storage
   infromations changes*/
-  const stepOneData = localStorage.getItem('stepOne');
-  const stepTwoData = localStorage.getItem('stepTwo');
-  const stepThreeData = localStorage.getItem('stepThree');
+  
+  
+  const stepOneData = (typeof window !== "undefined") ? window.localStorage.getItem('stepOne') : {};
+  const stepTwoData = (typeof window !== "undefined") ?  window.localStorage.getItem('stepTwo') : {};
+  const stepThreeData = (typeof window !== "undefined") ?  window.localStorage.getItem('stepThree') : {};
   useEffect(() => {
     if (stepOneData) {
       const parsedData = JSON.parse(stepOneData);
+      
       setFormInfo((prevFormInfo) => ({ ...prevFormInfo, ...parsedData }));
     }
     if (stepTwoData) {
