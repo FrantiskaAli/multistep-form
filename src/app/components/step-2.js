@@ -1,8 +1,14 @@
 'use client'
+
 import { useState, useEffect } from "react"
+import clsx from 'clsx';
+
+
 
 
 export default function StepTwo({ originalValues, next, prev }) {
+ 
+
   const [selectedPlan, setPlan] = useState(originalValues.plan);
   const [timePlan, setTimePlan] = useState(originalValues?.period);
   const [prices, setPrices] = useState({ //setting values for each plan depending if its selected for monthly or yearly
@@ -48,6 +54,7 @@ export default function StepTwo({ originalValues, next, prev }) {
           <article className="plan-headings">
           <h3 className="plan-name-h">Arcade</h3>
           <p>${prices.arcadePrice}</p>
+          {selectedPlan === "Arcade" && timePlan === "Yearly" && <p className="freemonths">2 months free</p>}
           </article>
         </section>
         <section  className={selectedPlan === "Advanced" ? "active plan" : "plan"}  onClick={() => handleClick("Advanced")}>
@@ -55,6 +62,7 @@ export default function StepTwo({ originalValues, next, prev }) {
          <article className="plan-headings">
           <h3 className="plan-name-h">Advanced</h3>
           <p>${prices.advancedPrice}</p>
+          {selectedPlan === "Advanced" && timePlan === "Yearly" &&<p className="freemonths">2 months free</p>}
           </article>
         </section>
 
@@ -63,6 +71,7 @@ export default function StepTwo({ originalValues, next, prev }) {
           <article className="plan-headings">
           <h3 className="plan-name-h">Pro</h3>
           <p>${prices.proPrice}</p>
+          {selectedPlan === "Pro" && timePlan === "Yearly" && <p className="freemonths">2 months free</p>}
           </article>
         </section>
 

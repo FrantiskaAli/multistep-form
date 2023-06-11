@@ -20,13 +20,43 @@
 }
 
 /*font import*/
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap');
+
+@font-face {
+  font-family: 'Ubuntu';
+  src:  url('./assets/fonts/Ubuntu-Regular.ttf') format('trueType');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Ubuntu';
+  src:  url('./assets/fonts/Ubuntu-Bold.ttf') format('trueType');
+  font-weight: bold;
+  font-style: bold;
+}
+@font-face {
+  font-family: 'Ubuntu';
+  src:  url('./assets/fonts/Ubuntu-Medium.ttf') format('trueType');
+  font-weight: medium;
+  font-style: medium;
+}
+
+h1,h2,h3,h4{
+  font-family: 'Ubuntu';
+}
+button{
+  font-family: 'Ubuntu';
+}
+input{
+  font-family: 'Ubuntu';
+}
 
 body {
   background-color: var(--light-gray);
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 16px;
 }
 
 
@@ -66,12 +96,13 @@ body {
 }
 
 .step-no {
+  display:flex;
   border: 1px solid var(--alabaster);
   border-radius: 50%;
-  padding: 5%;
-  padding-top: 6%;
-  height: 5%;
-  width: 5%;
+  height: 2rem;
+  width: 2rem;
+  align-items: center;
+  justify-content: center;
   background-color: var(--purplish-blue);
   color: var(--alabaster);
   font-weight: bolder;
@@ -81,12 +112,12 @@ body {
   margin-left: 10%;
 }
 
-.number {
-  margin-top: -5px;
-}
 
 .activeStep {
   background-color: var(--light-blue);
+  
+}
+.activeStep>p{
   color: var(--purplish-blue);
 }
 
@@ -213,7 +244,7 @@ h2 {
 }
 
 .plan-headings{
-  margin-top:40%;
+  margin-top:20%;
 
 }
 .plan-name-h{
@@ -287,7 +318,12 @@ height: 25px;
   color:var(--cool-gray);
 }
 .act-period{
-  color:var(--marine-blue)
+  color:var(--marine-blue);
+}
+.freemonths{
+  color: var(--marine-blue);
+  font-size:smaller;
+  font-weight: bolder;
 }
 /*step 3*/
 .add-ons{
@@ -297,10 +333,14 @@ height: 25px;
   display:flex;
   width: 90%;
   justify-content: space-between;
+  align-items: center;
   border:solid 1px var(--light-gray);
   border-radius:10px;
   padding: 2.5% 5%;
   margin-top:5%;
+}
+.add-on:hover{
+  border-color:var(--purplish-blue)
 }
 
 .addon-inside{
@@ -316,6 +356,8 @@ h3{
   color:var(--marine-blue);
   margin-bottom: .4rem;
 }
+
+/*summary*/
 .summary-choice{
   display: flex;
   justify-content: space-between;
@@ -356,6 +398,14 @@ h3{
   background-color: hsla(243, 100%, 62%, 0.07);
   border-color:var(--purplish-blue);
 }
+.change{
+  text-decoration: underline;
+}
+.change:hover{
+  color: var(--purplish-blue);
+  cursor:pointer;
+}
+/*thank you page*/
 #thanks{
   align-items: center;
   justify-items: center;
@@ -367,4 +417,98 @@ h3{
 }
 .smaller{
   font-size: smaller;
+}
+/*media queries*/
+@media screen and (max-width: 600px) {
+ #main-section{
+  flex-direction: column;
+  min-height: 100%;
+  min-width:100%;
+  background-color: var(--light-gray);
+  align-items: center;
+ }
+ #steps-guide{
+  background-image: url('./assets/bg-sidebar-mobile.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 172px;
+  display: flex;
+  justify-content: center;
+  min-width: 110vw;
+ }
+ #step-list {
+    display:flex;
+   justify-content: space-between;
+   width: 60%;
+   margin-top:-3vh;
+}
+.aside-step-headings{
+  display:none;
+}
+.main-form{
+  width: 80vw;
+  background-color: white;
+  justify-self: center;
+  min-height: 600px;
+  margin-top: -70px;
+  border-radius:10px;
+  padding:10% 4%;
+}
+#options-row{
+ flex-direction:column;
+ align-items: space-between;
+}
+.plan{
+  margin-top:1rem;
+  width: 90%;
+  display: flex;
+  height: 3rem;
+}
+.plan-headings{
+  margin-top:0%;
+  margin-left:10%;
+}
+.periods{
+  font-weight: bolder;
+  font-size: smaller;
+  margin:0 .7rem;
+  color:var(--cool-gray);
+}
+.act-period{
+  color:var(--marine-blue)
+}
+#pickPeriod{
+  padding:6% 0;
+}
+.label-addOns>p{
+  font-size:small;
+}
+.label-addOns{
+  margin-left: .5rem;
+}
+.addon-inside{
+  padding:5% 2%;
+}
+.btns-flex{
+  position: absolute;
+  bottom: 0px;
+  width:100vw;
+  padding: 5% 10%;
+  background-color: white;
+  margin:0;
+  align-self: center;
+}
+.btn-back{
+  margin-left:20px;
+}
+.btn-next{
+  margin-right:20px;
+}
+.input {
+  width: 90%;
+}
+.summary-choice{
+  padding:7% 5%;
+}
+
 }

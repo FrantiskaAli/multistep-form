@@ -48,7 +48,7 @@ export default function StepFour({ oVal, next, prev, toPlan }) {
       <article id="summary-plan" className="summary-choice">
         <section>
           <h3>{info.plan}({info.period})</h3>
-          <p onClick={() => toPlan()}>Change</p>
+          <p onClick={() => toPlan()} className="change">Change</p>
         </section>
         <section id="plan-price-sum">
           ${mainPrice}/{info.period === "Monthly" ? "mo" : "yr"}

@@ -7,7 +7,7 @@ export default function Aside({ step }) {
             <ul id="step-list">
             <li className="guide-item" >
                 <section className={step === 1 ? "step-no activeStep" : "step-no"}>
-                    <p className="number">1</p>
+                    <p>1</p>
                 </section>
                 <section className="aside-step-headings">
                     <h2 className="aside-step-h1">
@@ -20,7 +20,7 @@ export default function Aside({ step }) {
             </li>
             <li className="guide-item" >
                 <section className={step === 2 ? "step-no activeStep" : "step-no"}>
-                <p className="number">2</p>
+                <p>2</p>
                 </section>
                 <section className="aside-step-headings">
                     <h2 className="aside-step-h1">
@@ -33,7 +33,7 @@ export default function Aside({ step }) {
             </li>
             <li className="guide-item" >
                 <section className={step === 3 ? "step-no activeStep" : "step-no"}>
-                <p className="number">3</p>
+                <p>3</p>
                 </section>
                 <section className="aside-step-headings">
                     <h2 className="aside-step-h1">
@@ -46,7 +46,7 @@ export default function Aside({ step }) {
             </li>
             <li className="guide-item" >
                 <section className={step === 4 ? "step-no activeStep" : "step-no"}>
-                <p className="number">4</p>
+                <p>4</p>
                 </section>
                 <section className="aside-step-headings">
                     <h2 className="aside-step-h1">
