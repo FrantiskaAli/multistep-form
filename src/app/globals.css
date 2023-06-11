@@ -75,6 +75,8 @@ body {
   padding: 2%;
   border-radius: 10px;
   width: 900px;
+  -webkit-box-shadow: 2px 3px 4px 1px hsla(231, 11%, 63%, 0.467); 
+box-shadow: 2px 3px 4px 1px hsla(231, 11%, 63%, 0.408);
 }
 
 /*steps aside section*/
@@ -449,11 +451,15 @@ h3{
   width: 80vw;
   background-color: white;
   justify-self: center;
-  min-height: 600px;
+  min-height: 500px;
   margin-top: -70px;
   border-radius:10px;
   padding:10% 4%;
+  -webkit-box-shadow: 2px 3px 4px 1px hsla(231, 11%, 63%, 0.467); 
+box-shadow: 2px 3px 4px 1px hsla(231, 11%, 63%, 0.408);
+
 }
+
 #options-row{
  flex-direction:column;
  align-items: space-between;
