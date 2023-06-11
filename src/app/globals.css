@@ -520,5 +520,6 @@ box-shadow: 2px 3px 4px 1px hsla(231, 11%, 63%, 0.408);
 .summary-choice{
   padding:7% 5%;
 }
-
+.active>.plan-headings{
+  margin-top:5%}
 }
