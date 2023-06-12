@@ -51,7 +51,7 @@ input{
 }
 
 body {
-  background-color: var(--light-gray);
+  background-color: var(--light-blue);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -464,7 +464,7 @@ h3{
   flex-direction: column;
   min-height: 100%;
   min-width:100%;
-  background-color: var(--light-gray);
+  background-color: var(--light-blue);
   align-items: center;
 
  }
