@@ -358,7 +358,44 @@ h3{
   color:var(--marine-blue);
   margin-bottom: .4rem;
 }
+/*custom checkbox*/
+.custom-checkbox {
+  display: none;
+}
 
+.custom-checkbox + label {
+  position: relative;
+  margin-top:10px;
+  margin-left:-.5rem;
+  padding-left: 30px; /* Adjust the size of the checkbox */
+  cursor: pointer;
+  
+}
+
+.custom-checkbox + label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px; /* Adjust the size of the checkbox */
+  height: 20px; /* Adjust the size of the checkbox */
+  background-color: white;
+  border: solid 1px var(--light-gray);
+  border-radius: 5px;
+}
+
+.custom-checkbox:checked + label::before {
+  content: "\2713"; /* Unicode character for a checkmark */
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px; /* Adjust the size of the checkbox */
+  height: 20px; /* Adjust the size of the checkbox */
+  background-color: var(--purplish-blue);
+  color: white ;
+  font-weight: bold;
+  text-align: center;
+  line-height: 20px;}
 /*summary*/
 .summary-choice{
   display: flex;

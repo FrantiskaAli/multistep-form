@@ -35,7 +35,7 @@ export default function StepThree({ oVal, next, prev }) {
       <article id="add-ons">
         <section className={addOns.onlineServices ? "add-on active" : "add-on"} >
           <article className="addon-inside">
-            <input type="checkbox" name="online-services" id="online-services" checked={addOns.onlineServices} onChange={() => handleCheckbox("onlineServices")} />
+            <input type="checkbox" className="custom-checkbox" name="online-services" id="online-services" checked={addOns.onlineServices} onChange={() => handleCheckbox("onlineServices")} />
             <label className="label-addOns" htmlFor="online-services">
               <h3>Online service</h3>
               <p>Access to multiplayer games</p>
@@ -46,7 +46,7 @@ export default function StepThree({ oVal, next, prev }) {
         </section>
         <section className={addOns.largerStorage? "add-on active" : "add-on"} >
           <article className="addon-inside">
-            <input type="checkbox" name="extra-storage" id="extra-storage" checked={addOns.largerStorage} onChange={() => handleCheckbox("largerStorage")} />
+            <input type="checkbox" className="custom-checkbox" name="extra-storage" id="extra-storage" checked={addOns.largerStorage} onChange={() => handleCheckbox("largerStorage")} />
             <label htmlFor="extra-storage" className="label-addOns" >
               <h3>Extra storage</h3>
               <p>Extra 1TB of cloud save</p>
@@ -56,7 +56,7 @@ export default function StepThree({ oVal, next, prev }) {
         </section>
         <section className={addOns.customProfile ? "add-on active" : "add-on"} >
           <article className="addon-inside">
-            <input type="checkbox" name="custom-profile" id="custom-profile" checked={addOns.customProfile} onChange={() => handleCheckbox("customProfile")} />
+            <input type="checkbox" className="custom-checkbox" name="custom-profile" id="custom-profile" checked={addOns.customProfile} onChange={() => handleCheckbox("customProfile")} />
             <label htmlFor="custom-profile" className="label-addOns" >
               <h3>Customizable Profile</h3>
               <p>Custom theme your profile</p>

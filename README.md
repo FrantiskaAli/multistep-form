@@ -1,34 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Multi-step Form [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+Challenge by frontend mentor created in next.js using React.
 
-## Getting Started
+## Table of content
+- [Description and usage](#description-and-usage)
+- [Installation](#installation)
+- [My challenges](#challenges)
+- [Authors](#authors)
+## Description an usage
+One page application that collects users data and creates positive experience  while filling the form.
+On first page requiers user to input name, email and telephone number and throws error message when fields left empty or with incorrect input.
+On the second page user selects the plan and picks a period using switch slide button.
+Next step focuses on picking the add-ons to users plan and is followed by summary page where final price is calculated on screen
 
-First, run the development server:
+## Installation
+If you would like to add or improve our website, simply download our repository and run NPM install.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Screenshots
+### For desktop
+- ![screenshot of step1](./src/app/assets/screenshots/step-1.desk.jpg)
+- ![screenshot of step2](./src/app/assets/screenshots/step-2.desk.jpg)
+- ![screenshot of step3](./src/app/assets/screenshots/step-3.desk.jpg)
+- ![screenshot of step4](./src/app/assets/screenshots/step-4.desk.jpg)
+/ - ![screenshot of thankyou](./src/app/assets/screenshots/thanks.desk.jpg)
+### Mobile view
+- ![screenshot of mobile views](./src/app/assets/screenshots/mobile.jpg)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## My challenges
+I found this project challenging and I am grateful that I decided to try. 
+Firstly I did struggle with understanding how to correctly pass form data to the parent element, and then ran into trouble once more realizing next.js needs a special conditioning when setting local storage.
+I did use help when setting custom checkboxes , found that to be a tough one as well.
+Other than then I did my best to achieve desired design and believe I was rather successful.
 
-To learn more about Next.js, take a look at the following resources:
+## Author
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Frantiska Rechkova](https://github.com/FrantiskaAli)
+- [My frontend mentor](https://www.frontendmentor.io/profile/FrantiskaAli)
